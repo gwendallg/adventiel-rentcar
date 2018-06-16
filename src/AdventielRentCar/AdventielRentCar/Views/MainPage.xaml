@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:AdventielRentCar.Controls;assembly=AdventielRentCar"
+             x:Class="AdventielRentCar.Views.MainPage"
+             Title="{Binding Title}"  BackgroundImage="ic_signin_background.png">
+
+    <StackLayout VerticalOptions="Center" Margin="20">
+
+        <Entry Placeholder="{Binding LblLogin}" HorizontalOptions="Fill" Text="{Binding Login}"/>
+        <Entry Placeholder="{Binding LblPassword}" Text="{Binding Password}" IsPassword="True" HorizontalOptions="Fill"/>
+        <StackLayout Orientation="Horizontal" Margin="5" Padding="2" HorizontalOptions="CenterAndExpand">
+            <Switch IsToggled="{Binding IsRemenberMe}" HorizontalOptions="Start"></Switch>
+            <Label Text="{Binding LblRememberMe}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"></Label>
+            <Image Source="{Binding DefaultLanguage}" Scale="0.5" HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChooseLanguageCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+
+        <controls:RoundedButton Command="{Binding LogOnCommand}" HorizontalOptions="Fill" Text="{Binding LblLogOn}" AltBackgroundColor="#e1dad2" AltForeColor="#3b4223" />
+        <controls:RoundedButton HorizontalOptions="Fill" Text="{Binding LblSigin}" AltBackgroundColor="#e1dad2" AltForeColor="#3b4223" />
+    </StackLayout>
+
+</ContentPage>
