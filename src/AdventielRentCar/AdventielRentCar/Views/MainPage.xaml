@@ -6,14 +6,22 @@
     x:Class="AdventielRentCar.Views.MainPage"
     Title="{Binding Title}">
     <RelativeLayout>
-        <Image
-            Source="ic_signin_background.png"
-            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
-            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+        <BoxView
+            Color="Gray"
+            HeightRequest="100"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
+        <Button
+            BorderRadius="35"
+            BorderColor="Black"
+            BackgroundColor="Olive"
+            BorderWidth="5"
+            HeightRequest="70"
+            WidthRequest="70"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -35}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=70}" />
         <StackLayout
-            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
-
-            VerticalOptions="EndAndExpand"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=150}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
             Margin="5"
             Orientation="Vertical">
             <Entry
@@ -32,7 +40,8 @@
                 HorizontalOptions="CenterAndExpand">
                 <Switch
                     IsToggled="{Binding IsRemenberMe}"
-                    HorizontalOptions="Start" VerticalOptions="Center"/>
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center" />
                 <Label
                     Text="{Binding LblRememberMe}"
                     VerticalTextAlignment="Center"
@@ -46,9 +55,12 @@
                             Command="{Binding ChooseLanguageCommand}" />
                     </Image.GestureRecognizers>
                     <Image.Scale>
-                        <OnPlatform x:TypeArguments="x:Double">
-                            <On Platform="iOS">.2</On>
-                            <On Platform="Android">.5</On>
+                        <OnPlatform
+                            x:TypeArguments="x:Double">
+                            <On
+                                Platform="iOS">.2</On>
+                            <On
+                                Platform="Android">.5</On>
                         </OnPlatform>
                     </Image.Scale>
                 </Image>

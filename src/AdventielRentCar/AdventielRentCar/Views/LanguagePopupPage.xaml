@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
@@ -16,12 +16,12 @@
     </ContentPage.Resources>
     <popup:PopupPage.Animation>
         <animations:ScaleAnimation 
-            PositionIn="Left"
+            PositionIn="Center"
             PositionOut="Center"
             ScaleIn="1.2"
             ScaleOut="0.8"
-            DurationIn="100"
-            DurationOut="300"
+            DurationIn="200"
+            DurationOut="200"
             HasBackgroundAnimation="True"/>
     </popup:PopupPage.Animation>
 
@@ -29,6 +29,7 @@
                  VerticalOptions="Center"
                  MinimumWidthRequest="600"
                  MinimumHeightRequest="300"
+               
                  BackgroundColor="White">
         <ListView ItemsSource="{Binding Languages}" 
                   CachingStrategy="RecycleElement">
