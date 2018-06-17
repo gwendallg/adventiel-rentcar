@@ -91,6 +91,22 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_signin_background.png">
+      <ResourceTags>false</ResourceTags>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-ldpi\ic_signin_background.png">
+      <ResourceTags>false</ResourceTags>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_signin_background.png">
+      <ResourceTags>false</ResourceTags>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_signin_background.png">
+      <ResourceTags>false</ResourceTags>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_signin_background.png">
+      <ResourceTags>false</ResourceTags>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_signin_background.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -104,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdventielRentCar\AdventielRentCar.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{B08064FA-DB2D-4FCB-817B-6E5C341FDD1F}</Project>
       <Name>AdventielRentCar</Name>
     </ProjectReference>
   </ItemGroup>
@@ -130,9 +146,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_language_ru.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_signin_background.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_language_de.png" />
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_language_ru.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_signin_background.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-ldpi\ic_language_de.png" />
@@ -178,9 +188,6 @@
     <AndroidResource Include="Resources\drawable-ldpi\ic_language_ru.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\ic_signin_background.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_language_de.png" />
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_language_ru.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\ic_signin_background.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\ic_language_de.png" />
@@ -226,9 +230,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_language_ru.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_signin_background.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_language_de.png" />
   </ItemGroup>
   <ItemGroup>
@@ -248,9 +249,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_language_ru.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_signin_background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

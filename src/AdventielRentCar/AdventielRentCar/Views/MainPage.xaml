@@ -1,26 +1,69 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:AdventielRentCar.Controls;assembly=AdventielRentCar"
-             x:Class="AdventielRentCar.Views.MainPage"
-             Title="{Binding Title}"  BackgroundImage="ic_signin_background.png">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AdventielRentCar.Controls;assembly=AdventielRentCar"
+    x:Class="AdventielRentCar.Views.MainPage"
+    Title="{Binding Title}">
+    <RelativeLayout>
+        <Image
+            Source="ic_signin_background.png"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+        <StackLayout
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
 
-    <StackLayout VerticalOptions="Center" Margin="20">
-
-        <Entry Placeholder="{Binding LblLogin}" HorizontalOptions="Fill" Text="{Binding Login}"/>
-        <Entry Placeholder="{Binding LblPassword}" Text="{Binding Password}" IsPassword="True" HorizontalOptions="Fill"/>
-        <StackLayout Orientation="Horizontal" Margin="5" Padding="2" HorizontalOptions="CenterAndExpand">
-            <Switch IsToggled="{Binding IsRemenberMe}" HorizontalOptions="Start"></Switch>
-            <Label Text="{Binding LblRememberMe}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand"></Label>
-            <Image Source="{Binding DefaultLanguage}" Scale="0.5" HorizontalOptions="End">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ChooseLanguageCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
+            VerticalOptions="EndAndExpand"
+            Margin="5"
+            Orientation="Vertical">
+            <Entry
+                Placeholder="{Binding LblLogin}"
+                HorizontalOptions="Fill"
+                Text="{Binding Login}" />
+            <Entry
+                Placeholder="{Binding LblPassword}"
+                Text="{Binding Password}"
+                IsPassword="True"
+                HorizontalOptions="Fill" />
+            <StackLayout
+                Orientation="Horizontal"
+                Margin="5"
+                Padding="2"
+                HorizontalOptions="CenterAndExpand">
+                <Switch
+                    IsToggled="{Binding IsRemenberMe}"
+                    HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label
+                    Text="{Binding LblRememberMe}"
+                    VerticalTextAlignment="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Image
+                    Source="{Binding DefaultLanguage}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding ChooseLanguageCommand}" />
+                    </Image.GestureRecognizers>
+                    <Image.Scale>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS">.2</On>
+                            <On Platform="Android">.5</On>
+                        </OnPlatform>
+                    </Image.Scale>
+                </Image>
+            </StackLayout>
+            <controls:RoundedButton
+                Command="{Binding LogOnCommand}"
+                HorizontalOptions="Fill"
+                Text="{Binding LblLogOn}"
+                AltBackgroundColor="#e1dad2"
+                AltForeColor="#3b4223" />
+            <controls:RoundedButton
+                HorizontalOptions="Fill"
+                Text="{Binding LblSigin}"
+                AltBackgroundColor="#e1dad2"
+                AltForeColor="#3b4223" />
         </StackLayout>
-
-        <controls:RoundedButton Command="{Binding LogOnCommand}" HorizontalOptions="Fill" Text="{Binding LblLogOn}" AltBackgroundColor="#e1dad2" AltForeColor="#3b4223" />
-        <controls:RoundedButton HorizontalOptions="Fill" Text="{Binding LblSigin}" AltBackgroundColor="#e1dad2" AltForeColor="#3b4223" />
-    </StackLayout>
-
+    </RelativeLayout>
 </ContentPage>

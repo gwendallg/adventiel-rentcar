@@ -124,7 +124,8 @@ namespace AdventielRentCar.Services
 
             // récupération des migrations appliquables
             var resources = GetType().Assembly.GetManifestResourceNames()
-                .Where(r => r.StartsWith("AdventielRentCar.Migrations.db")).OrderBy(r => r);
+                                     .Where(r => r.StartsWith("AdventielRentCar.Migrations.db",StringComparison.InvariantCulture))
+                                     .OrderBy(r => r);
             foreach (var resource in resources)
             {
                 var migration = TryBuilNewMigration(resource, migrations, out var script);
