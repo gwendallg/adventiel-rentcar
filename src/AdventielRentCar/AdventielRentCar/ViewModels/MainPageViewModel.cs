@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services;
 using System.Globalization;
 using System.Threading;
 using AdventielRentCar.Services;
@@ -11,6 +12,7 @@ namespace AdventielRentCar.ViewModels
     {
         private readonly ILanguageService _languageService;
         private readonly IUserService _userService;
+        private readonly IPageDialogService _pageDialogService;
 
         private string _signIn;
 
@@ -114,14 +116,17 @@ namespace AdventielRentCar.ViewModels
 
         public DelegateCommand LogOnCommand { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService,
+        public MainPageViewModel(
+            INavigationService navigationService,
             IUserService userService,
-            ILanguageService languageService
+            ILanguageService languageService,
+            IPageDialogService pageDialogService
         )
             : base(navigationService)
         {
             _userService = userService;
             _languageService = languageService;
+            _pageDialogService = pageDialogService;
 
             ChooseLanguageCommand = new DelegateCommand(OnChooseLanguage);
             LogOnCommand = new DelegateCommand(OnLogOn);
@@ -137,13 +142,15 @@ namespace AdventielRentCar.ViewModels
             await NavigationService.NavigateAsync("LanguagePopupPage");
         }
 
-        private void OnLogOn()
+        private async void OnLogOn()
         {
             if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(Password)) return;
             var user = _userService.Authenticate(Login, Password);
             if (user != null && IsRemenberMe)
             {
                 _userService.SetRememberLogin(user.Login);
+            }else{
+                await _pageDialogService.DisplayAlertAsync("Error", "Login ou mot de passe invalide", "Annuler");
             }
         }
 
@@ -166,7 +173,7 @@ namespace AdventielRentCar.ViewModels
             base.OnNavigatedTo(parameters);
             if (!parameters.ContainsKey(Constants.ReferenceCodes.DefaultLanguage)) return;
             Thread.CurrentThread.CurrentUICulture =
-                (CultureInfo) parameters[Constants.ReferenceCodes.DefaultLanguage];
+                (CultureInfo)parameters[Constants.ReferenceCodes.DefaultLanguage];
             Translate();
         }
     }

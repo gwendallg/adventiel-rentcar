@@ -39,7 +39,8 @@ namespace AdventielRentCar.Services
         {
             using (var connection = _databaseService.Connnection())
             {
-                var user = connection.Find<User>(u => u.Login == login);
+                var loginToLower = login.ToLowerInvariant();
+                var user = connection.Find<User>(u => u.Login == loginToLower);
                 if (user == null) return null;
                 var hash = _cryptographyService.Sha256(string.Concat(password, user.Salt));
                 return hash != user.Hash ? null : user;
