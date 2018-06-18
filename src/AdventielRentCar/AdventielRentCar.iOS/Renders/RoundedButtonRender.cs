@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AdventielRentCar.Controls;
 using AdventielRentCar.iOS.Renders;
 using Xamarin.Forms.Platform.iOS;
@@ -11,24 +12,22 @@ namespace AdventielRentCar.iOS.Renders
     public class RoundedButtonRender : ButtonRenderer
     {
 
-
         void Button_Released(object sender, EventArgs e)
         {
-            var button = (RoundedButton)sender;
-            button.BackgroundColor = Color.White;
+            var button = (RoundedButton) sender;
+            button.BackgroundColor = ((List<Color>) button.Bag)[0];
+            button.TextColor = ((List<Color>) button.Bag)[1];
+            button.BorderColor = ((List<Color>) button.Bag)[2];
             button.TextColor = Color.Black;
-
         }
-
 
         void Button_Pressed(object sender, EventArgs e)
         {
-            var button = (RoundedButton)sender;
+            var button = (RoundedButton) sender;
             button.BackgroundColor = button.AltBackgroundColor;
-            button.TextColor = button.AltForeColor;
-
+            button.TextColor = button.AltTextColor;
+            button.BorderColor = button.AltBorderColor;
         }
-
 
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
         {
@@ -39,17 +38,19 @@ namespace AdventielRentCar.iOS.Renders
                 if (e.OldElement != null)
                 {
                     var button = ((RoundedButton)e.NewElement);
+                    button.Bag = null;
                     button.Pressed -= Button_Pressed;
                     button.Released -= Button_Released;
                 }
+
                 if (e.NewElement != null)
                 {
-                    var button = ((RoundedButton)e.NewElement);
+                    var button = (RoundedButton) e.NewElement;
+                    button.Bag = new List<Color>();
+                    ((List<object>) button.Bag).Add(button.BackgroundColor);
+                    ((List<Object>) button.Bag).Add(button.TextColor);
+                    ((List<Object>) button.Bag).Add(button.BorderColor);
                     button.Released += Button_Released;
-                    button.BackgroundColor = Color.White;
-                    button.TextColor = Color.Black;
-                    button.BorderWidth = 3;
-                    button.BorderRadius = 10;
                     button.Pressed += Button_Pressed;
                 }
             }

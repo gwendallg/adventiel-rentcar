@@ -7,7 +7,7 @@
                  xmlns:converters="clr-namespace:AdventielRentCar.Converters;assembly=AdventielRentCar"
                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                  prism:ViewModelLocator.AutowireViewModel="True"
-                 Padding="100"
+                 Padding="50,100"
                  x:Class="AdventielRentCar.Views.LanguagePopupPage" BackgroundColor="Transparent">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -25,28 +25,28 @@
             HasBackgroundAnimation="True"/>
     </popup:PopupPage.Animation>
 
-    <StackLayout HorizontalOptions="Center" 
-                 VerticalOptions="Center"
-                 MinimumWidthRequest="600"
-                 MinimumHeightRequest="300"
-               
-                 BackgroundColor="White">
-        <ListView ItemsSource="{Binding Languages}" 
+    <RelativeLayout>
+        <Frame HasShadow="True" OutlineColor="Black"  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height ,Factor=0, Constant=300  }"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width }"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y, Constant=20, Factor=0 }">
+            <ListView ItemsSource="{Binding Languages}"  SeparatorVisibility="None"
+                 
+                  BackgroundColor="White"
                   CachingStrategy="RecycleElement">
-            <ListView.Behaviors>
-                <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding TappedCommand}" EventArgsConverter="{StaticResource ItemTappedConverter}" />
-            </ListView.Behaviors>
-            <!--Built in Cells-->
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding Image}" Scale="0.5"></Image>
-                            <Label Text="{Binding Label}" VerticalOptions="Center"></Label>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding TappedCommand}" EventArgsConverter="{StaticResource ItemTappedConverter}" />
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Scale="0.5"></Image>
+                                <Label Text="{Binding Label}" VerticalOptions="Center"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </RelativeLayout>
 </popup:PopupPage>

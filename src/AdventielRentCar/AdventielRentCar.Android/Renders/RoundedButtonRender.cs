@@ -15,59 +15,56 @@ namespace AdventielRentCar.Droid.Renders
         public RoundedButtonRender(Context context) : base(context)
         {
         }
-       
+
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
         {
             base.OnElementChanged(e);
             if (e.NewElement != null)
             {
+                var roundedButton = (RoundedButton)e.NewElement;
+                var gradientDrawable = new GradientDrawable();
+                gradientDrawable.SetShape(ShapeType.Rectangle);
+                gradientDrawable.SetColor(roundedButton.BackgroundColor.ToAndroid());
+                gradientDrawable.SetStroke(Convert.ToInt32(roundedButton.BorderWidth),
+                    roundedButton.BorderColor.ToAndroid());
+                gradientDrawable.SetCornerRadius(roundedButton.BorderRadius);
+                Control.SetBackground(gradientDrawable);
+                Control.SetTextColor(roundedButton.TextColor.ToAndroid());
                 e.NewElement.Released += OnReleased;
                 e.NewElement.Pressed += OnPressed;
-                e.NewElement.SizeChanged += OnSizeChanged;
             }
             else if (e.OldElement != null)
             {
                 e.OldElement.Pressed -= OnPressed;
                 e.OldElement.Released -= OnReleased;
-                e.OldElement.SizeChanged -= OnSizeChanged;
             }
         }
 
-        private void OnReleased (object sender, EventArgs e)
+        private void OnReleased(object sender, EventArgs e)
         {
             if (Control == null) return;
+            var roundedButton = (RoundedButton)Element;
             var gradientDrawable = new GradientDrawable();
             gradientDrawable.SetShape(ShapeType.Rectangle);
-            gradientDrawable.SetColor(Android.Graphics.Color.White);
-            gradientDrawable.SetStroke(10, Android.Graphics.Color.Black);
-            gradientDrawable.SetCornerRadius(38.0f);
+            gradientDrawable.SetColor(roundedButton.BackgroundColor.ToAndroid());
+            gradientDrawable.SetStroke(Convert.ToInt32(roundedButton.BorderWidth),
+                roundedButton.BorderColor.ToAndroid());
+            gradientDrawable.SetCornerRadius(roundedButton.BorderRadius);
             Control.SetBackground(gradientDrawable);
-            Control.SetTextColor(Android.Graphics.Color.Black);
+            Control.SetTextColor(roundedButton.TextColor.ToAndroid());
         }
 
         private void OnPressed(object sender, EventArgs e)
         {
-            if(Control==null) return;
-
+            if (Control == null) return;
+            var roundedButton = (RoundedButton)Element;
             var gradientDrawable = new GradientDrawable();
             gradientDrawable.SetShape(ShapeType.Rectangle);
             gradientDrawable.SetColor(((RoundedButton)Element).AltBackgroundColor.ToAndroid());
-            gradientDrawable.SetStroke(10, ((RoundedButton)Element).AltForeColor.ToAndroid());
-            gradientDrawable.SetCornerRadius(38.0f);
+            gradientDrawable.SetStroke(Convert.ToInt32(roundedButton.BorderWidth), ((RoundedButton)Element).AltBorderColor.ToAndroid());
+            gradientDrawable.SetCornerRadius(roundedButton.BorderRadius);
             Control.SetBackground(gradientDrawable);
-            Control.SetTextColor(((RoundedButton)Element).AltForeColor.ToAndroid());
-        }
-        
-        private void OnSizeChanged(object sender, EventArgs e)
-        {
-            if (Control == null) return;
-            var gradientDrawable = new GradientDrawable();
-            gradientDrawable.SetShape(ShapeType.Rectangle);
-            gradientDrawable.SetColor(Android.Graphics.Color.White);
-            gradientDrawable.SetStroke(10, Android.Graphics.Color.Black);
-            gradientDrawable.SetCornerRadius(38.0f);
-            Control.SetBackground(gradientDrawable);
-            Control.SetTextColor(Android.Graphics.Color.Black);
+            Control.SetTextColor(((RoundedButton)Element).AltTextColor.ToAndroid());
         }
     }
 }

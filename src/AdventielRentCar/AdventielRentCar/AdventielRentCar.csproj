@@ -30,6 +30,12 @@
   <ItemGroup>
     <Compile Remove="EmptyClass.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\LogOnPage.xaml.cs">
+      <DependentUpon>LogOnPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>

@@ -156,4 +156,28 @@
   <data name="RemenberMe" xml:space="preserve">
     <value>Запомнить меня</value>
   </data>
+  <data name="InvalidLoginOrPassword" xml:space="preserve">
+    <value>ID или пароль неверный</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Проверка</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Изменения</value>
+  </data>
 </root>

@@ -156,4 +156,28 @@
   <data name="RemenberMe" xml:space="preserve">
     <value>Erinnere dich an mich</value>
   </data>
+  <data name="InvalidLoginOrPassword" xml:space="preserve">
+    <value>ID oder Passwort ungültig</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>Validieren</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Änderung</value>
+  </data>
 </root>

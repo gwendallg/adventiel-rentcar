@@ -1,7 +1,6 @@
 ﻿using AdventielRentCar.Services;
 using Prism;
 using Prism.Ioc;
-using AdventielRentCar.ViewModels;
 using AdventielRentCar.Views;
 using Prism.Plugin.Popups;
 using Xamarin.Forms;
@@ -26,7 +25,7 @@ namespace AdventielRentCar
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/LogOnPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -34,9 +33,10 @@ namespace AdventielRentCar
             containerRegistry.RegisterPopupNavigationService();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<LogOnPage>();
             containerRegistry.RegisterForNavigation<LanguagePopupPage>();
 
+            containerRegistry.RegisterSingleton<IMigrationService, MigrationService>();
             containerRegistry.RegisterSingleton<IDatabaseService, DatabaseService>();
             containerRegistry.RegisterSingleton<ILanguageService, LanguageService>();
             containerRegistry.RegisterSingleton<IUserService, UserService>();

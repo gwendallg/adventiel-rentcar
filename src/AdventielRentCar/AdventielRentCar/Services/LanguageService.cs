@@ -17,13 +17,18 @@ namespace AdventielRentCar.Services
             new ResourceManager("AdventielRentCar.Resources.AppResource",
                 typeof(LanguageService).GetTypeInfo().Assembly);
 
+       
         private readonly IDatabaseService _databaseService;
 
         /// <inheritdoc />
         public LanguageService(IDatabaseService databaseService)
         {
             _databaseService = databaseService;
+            CurrentCulture = CultureInfo.GetCultureInfo(GetDefaultLanguage());
         }
+
+        /// <inheritdoc />
+        public CultureInfo CurrentCulture { get; set; }
 
         /// <inheritdoc />
         public List<string> GetAvailableLanguages()
@@ -35,6 +40,12 @@ namespace AdventielRentCar.Services
         public string Translate(string id, CultureInfo cultureInfo)
         {
             return ResourceManager.GetString(id, cultureInfo);
+        }
+
+        /// <inheritdoc />
+        public string Translate(string id)
+        {
+            return Translate(id, CurrentCulture);
         }
 
         /// <inheritdoc />

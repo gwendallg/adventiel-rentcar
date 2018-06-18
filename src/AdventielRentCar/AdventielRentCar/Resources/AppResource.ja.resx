@@ -156,4 +156,28 @@
   <data name="RemenberMe" xml:space="preserve">
     <value>私を覚えなさい</value>
   </data>
+  <data name="InvalidLoginOrPassword" xml:space="preserve">
+    <value>ID またはパスワードが無効です。</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>続行</value>
+  </data>
+  <data name="Validate" xml:space="preserve">
+    <value>検証</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>変更</value>
+  </data>
 </root>

@@ -3,22 +3,20 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:AdventielRentCar.Controls;assembly=AdventielRentCar"
-    x:Class="AdventielRentCar.Views.MainPage"
+    x:Class="AdventielRentCar.Views.LogOnPage"
     Title="{Binding Title}">
     <RelativeLayout>
         <BoxView
-            Color="Gray"
+            Color="{StaticResource DefaultTextColor}"
             HeightRequest="100"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
-        <Button
-            BorderRadius="35"
-            BorderColor="Black"
-            BackgroundColor="Olive"
-            BorderWidth="5"
+        <Image
+            Source="ic_adventiel.png"
             HeightRequest="70"
             WidthRequest="70"
-            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=.5, Constant = -35}"
-            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=70}" />
+            Scale="1.5"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1, Constant = -110 }"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=60 }" />
         <StackLayout
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=150}"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
@@ -66,16 +64,16 @@
                 </Image>
             </StackLayout>
             <controls:RoundedButton
-                Command="{Binding LogOnCommand}"
-                HorizontalOptions="Fill"
-                Text="{Binding LblLogOn}"
-                AltBackgroundColor="#e1dad2"
-                AltForeColor="#3b4223" />
-            <controls:RoundedButton
-                HorizontalOptions="Fill"
                 Text="{Binding LblSigin}"
-                AltBackgroundColor="#e1dad2"
-                AltForeColor="#3b4223" />
+                Style="{StaticResource DefaultButton}"/>
+            <controls:RoundedButton
+                Command="{Binding LogOnCommand}"
+                Text="{Binding LblLogOn}" 
+                Style="{StaticResource DefaultActiveButton}"/>
         </StackLayout>
+        <Label  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=-20}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" Text="Adventiel Copyrigth (c) 2018">
+            
+        </Label>
     </RelativeLayout>
 </ContentPage>

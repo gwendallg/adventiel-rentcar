@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventielRentCar", "AdventielRentCar\AdventielRentCar\AdventielRentCar.csproj", "{B08064FA-DB2D-4FCB-817B-6E5C341FDD1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventielRentCar", "AdventielRentCar\AdventielRentCar\AdventielRentCar.csproj", "{B08064FA-DB2D-4FCB-817B-6E5C341FDD1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventielRentCar.Android", "AdventielRentCar\AdventielRentCar.Android\AdventielRentCar.Android.csproj", "{5545B4B7-10A5-499D-BE5D-568014717560}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventielRentCar.iOS", "AdventielRentCar\AdventielRentCar.iOS\AdventielRentCar.iOS.csproj", "{43504AAC-5442-433B-9905-B8314096C9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventielRentCar.UWP", "AdventielRentCar\AdventielRentCar.UWP\AdventielRentCar.UWP.csproj", "{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -189,11 +191,72 @@ Global
 		{43504AAC-5442-433B-9905-B8314096C9EF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{43504AAC-5442-433B-9905-B8314096C9EF}.Release|x64.ActiveCfg = Release|iPhone
 		{43504AAC-5442-433B-9905-B8314096C9EF}.Release|x86.ActiveCfg = Release|iPhone
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|Any CPU.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|Any CPU.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|Any CPU.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|ARM.ActiveCfg = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|ARM.Build.0 = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|ARM.Deploy.0 = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|iPhone.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|iPhone.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|iPhone.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|iPhoneSimulator.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|x64.ActiveCfg = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|x64.Build.0 = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|x64.Deploy.0 = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|x86.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|x86.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Ad-Hoc|x86.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|Any CPU.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|Any CPU.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|Any CPU.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|ARM.ActiveCfg = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|ARM.Build.0 = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|ARM.Deploy.0 = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|iPhone.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|iPhone.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|iPhone.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|iPhoneSimulator.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|iPhoneSimulator.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|iPhoneSimulator.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|x64.ActiveCfg = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|x64.Build.0 = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|x64.Deploy.0 = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|x86.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|x86.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.AppStore|x86.Deploy.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|ARM.Build.0 = Debug|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|ARM.Deploy.0 = Debug|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|iPhone.ActiveCfg = Debug|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|x64.ActiveCfg = Debug|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|x64.Build.0 = Debug|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|x64.Deploy.0 = Debug|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|x86.ActiveCfg = Debug|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|x86.Build.0 = Debug|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Debug|x86.Deploy.0 = Debug|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|Any CPU.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|ARM.ActiveCfg = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|ARM.Build.0 = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|ARM.Deploy.0 = Release|ARM
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|iPhone.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|iPhoneSimulator.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|x64.ActiveCfg = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|x64.Build.0 = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|x64.Deploy.0 = Release|x64
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|x86.ActiveCfg = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|x86.Build.0 = Release|x86
+		{1A3EEBAB-8C72-47E6-9E73-A6DFC25AB214}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_NeutralResourcesLanguage = fr-FR
 		SolutionGuid = {7456E489-780F-4F5E-A2B7-24778DECCAF5}
 	EndGlobalSection
 EndGlobal

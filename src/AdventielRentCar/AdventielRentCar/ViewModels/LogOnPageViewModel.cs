@@ -2,13 +2,12 @@
 using Prism.Navigation;
 using Prism.Services;
 using System.Globalization;
-using System.Threading;
 using AdventielRentCar.Services;
 using Xamarin.Forms;
 
 namespace AdventielRentCar.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class LogOnPageViewModel : ViewModelBase
     {
         private readonly ILanguageService _languageService;
         private readonly IUserService _userService;
@@ -112,11 +111,24 @@ namespace AdventielRentCar.ViewModels
             set => SetProperty(ref _defaultLanguage, value);
         }
 
+        /// <summary>
+        /// mvvm command choisir la langue
+        /// </summary>
         public DelegateCommand ChooseLanguageCommand { get; set; }
-
+        
+        /// <summary>
+        /// mvvm command se connecter
+        /// </summary>
         public DelegateCommand LogOnCommand { get; set; }
 
-        public MainPageViewModel(
+        /// <summary>
+        /// initialise un nouvelle instance de la classe
+        /// </summary>
+        /// <param name="navigationService">service de navigation</param>
+        /// <param name="userService">service utilisateur</param>
+        /// <param name="languageService">service de langue</param>
+        /// <param name="pageDialogService">service de page dialogue</param>
+        public LogOnPageViewModel(
             INavigationService navigationService,
             IUserService userService,
             ILanguageService languageService,
@@ -133,15 +145,20 @@ namespace AdventielRentCar.ViewModels
 
             Login = _userService.GetRememberLogin();
             IsRemenberMe = !string.IsNullOrWhiteSpace(Login);
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(_languageService.GetDefaultLanguage());
             Translate();
         }
 
+        /// <summary>
+        /// appelé lor
+        /// </summary>
         private async void OnChooseLanguage()
         {
             await NavigationService.NavigateAsync("LanguagePopupPage");
         }
 
+        /// <summary>
+        /// appelé lors la connexion
+        /// </summary>
         private async void OnLogOn()
         {
             if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(Password)) return;
@@ -149,8 +166,13 @@ namespace AdventielRentCar.ViewModels
             if (user != null && IsRemenberMe)
             {
                 _userService.SetRememberLogin(user.Login);
-            }else{
-                await _pageDialogService.DisplayAlertAsync("Error", "Login ou mot de passe invalide", "Annuler");
+            }
+            else
+            {
+                await _pageDialogService.DisplayAlertAsync(
+                    _languageService.Translate("Error"),
+                    _languageService.Translate("InvalidLoginOrPassword"),
+                    _languageService.Translate("Cancel"));
             }
         }
 
@@ -159,21 +181,25 @@ namespace AdventielRentCar.ViewModels
         /// </summary>
         private void Translate()
         {
-            DefaultLanguage = ImageSource.FromFile("ic_language_" + Thread.CurrentThread.CurrentUICulture.Name);
-            LblSigin = _languageService.Translate("SignIn", Thread.CurrentThread.CurrentUICulture);
-            LblLogin = _languageService.Translate("Login", Thread.CurrentThread.CurrentUICulture);
-            LblLogOn = _languageService.Translate("LogOn", Thread.CurrentThread.CurrentUICulture);
-            LblPassword = _languageService.Translate("Password", Thread.CurrentThread.CurrentUICulture);
-            LblSelectLanguage = _languageService.Translate("SelectLanguage", Thread.CurrentThread.CurrentUICulture);
-            LblRememberMe = _languageService.Translate("RemenberMe", Thread.CurrentThread.CurrentUICulture);
+            DefaultLanguage = ImageSource.FromFile("ic_language_" + _languageService.CurrentCulture.Name);
+            LblSigin = _languageService.Translate("SignIn");
+            LblLogin = _languageService.Translate("Login");
+            LblLogOn = _languageService.Translate("LogOn");
+            LblPassword = _languageService.Translate("Password");
+            LblSelectLanguage = _languageService.Translate("SelectLanguage");
+            LblRememberMe = _languageService.Translate("RemenberMe");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
             if (!parameters.ContainsKey(Constants.ReferenceCodes.DefaultLanguage)) return;
-            Thread.CurrentThread.CurrentUICulture =
-                (CultureInfo)parameters[Constants.ReferenceCodes.DefaultLanguage];
+            _languageService.CurrentCulture =
+                (CultureInfo) parameters[Constants.ReferenceCodes.DefaultLanguage];
             Translate();
         }
     }

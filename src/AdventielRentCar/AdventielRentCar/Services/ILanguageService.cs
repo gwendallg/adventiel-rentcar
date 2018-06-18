@@ -8,6 +8,12 @@ namespace AdventielRentCar.Services
     /// </summary>
     public interface ILanguageService
     {
+
+        /// <summary>
+        /// culture courante
+        /// </summary>
+        CultureInfo CurrentCulture { get; set; }
+
         /// <summary>
         /// retourne la liste des langues prisent en charge par l'application
         /// </summary>
@@ -21,6 +27,13 @@ namespace AdventielRentCar.Services
         /// <param name="cultureInfo"></param>
         /// <returns></returns>
         string Translate(string id, CultureInfo cultureInfo);
+
+        /// <summary>
+        /// réalise la traduction avec la culturre courante
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        string Translate(string id);
 
         /// <summary>
         /// retourne la langue courante
