@@ -16,11 +16,3 @@ create table reference (
 
 create unique index ix1_reference on reference (code, domain);
 
-create table vehicle (
-	id integer primary key autoincrement,
-	licence_plate TEXT not null, 
-	description TEXT not null,
-	total_mileage NUM
-);
-
-create unique index ix1_vehicle on vehicle (licence_plate);

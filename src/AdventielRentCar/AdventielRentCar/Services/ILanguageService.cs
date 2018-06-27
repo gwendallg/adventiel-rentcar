@@ -10,11 +10,6 @@ namespace AdventielRentCar.Services
     {
 
         /// <summary>
-        /// culture courante
-        /// </summary>
-        CultureInfo CurrentCulture { get; set; }
-
-        /// <summary>
         /// retourne la liste des langues prisent en charge par l'application
         /// </summary>
         /// <returns></returns>

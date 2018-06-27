@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace AdventielRentCar.ViewModels
 {
-    public class LogOnPageViewModel : ViewModelBase
+    public class LoginPageViewModel : ViewModelBase
     {
         private readonly ILanguageService _languageService;
         private readonly IUserService _userService;
@@ -128,7 +128,7 @@ namespace AdventielRentCar.ViewModels
         /// <param name="userService">service utilisateur</param>
         /// <param name="languageService">service de langue</param>
         /// <param name="pageDialogService">service de page dialogue</param>
-        public LogOnPageViewModel(
+        public LoginPageViewModel(
             INavigationService navigationService,
             IUserService userService,
             ILanguageService languageService,
@@ -141,7 +141,9 @@ namespace AdventielRentCar.ViewModels
             _pageDialogService = pageDialogService;
 
             ChooseLanguageCommand = new DelegateCommand(OnChooseLanguage);
-            LogOnCommand = new DelegateCommand(OnLogOn);
+            LogOnCommand = new DelegateCommand(OnLogOn, OnLogOnCanExecute)
+                .ObservesProperty(() => Login)
+                .ObservesProperty(() => Password);
 
             Login = _userService.GetRememberLogin();
             IsRemenberMe = !string.IsNullOrWhiteSpace(Login);
@@ -161,11 +163,15 @@ namespace AdventielRentCar.ViewModels
         /// </summary>
         private async void OnLogOn()
         {
-            if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(Password)) return;
             var user = _userService.Authenticate(Login, Password);
-            if (user != null && IsRemenberMe)
+            if (user != null)
             {
-                _userService.SetRememberLogin(user.Login);
+                if (IsRemenberMe)
+                {
+                    _userService.SetRememberLogin(user.Login);
+                }
+
+                await NavigationService.NavigateAsync("Main/Navigation/Home");
             }
             else
             {
@@ -176,12 +182,15 @@ namespace AdventielRentCar.ViewModels
             }
         }
 
+        private bool OnLogOnCanExecute() =>
+            !string.IsNullOrWhiteSpace(Login) && !string.IsNullOrWhiteSpace(Password) && IsNotBusy;
+
         /// <summary>
         /// traduit les libellés
         /// </summary>
         private void Translate()
         {
-            DefaultLanguage = ImageSource.FromFile("ic_language_" + _languageService.CurrentCulture.Name);
+            DefaultLanguage = ImageSource.FromFile("ic_language_" + Application.Current.GetCurrentCulture().Name);
             LblSigin = _languageService.Translate("SignIn");
             LblLogin = _languageService.Translate("Login");
             LblLogOn = _languageService.Translate("LogOn");
@@ -198,8 +207,6 @@ namespace AdventielRentCar.ViewModels
         {
             base.OnNavigatedTo(parameters);
             if (!parameters.ContainsKey(Constants.ReferenceCodes.DefaultLanguage)) return;
-            _languageService.CurrentCulture =
-                (CultureInfo) parameters[Constants.ReferenceCodes.DefaultLanguage];
             Translate();
         }
     }

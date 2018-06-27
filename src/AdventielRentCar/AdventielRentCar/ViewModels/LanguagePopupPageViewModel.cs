@@ -43,6 +43,7 @@ namespace AdventielRentCar.ViewModels
         {
             var parameters = new NavigationParameters {{Constants.ReferenceCodes.DefaultLanguage, obj.Culture}};
             _languageService.SetDefaultLanguage(obj.Culture.Name);
+            Application.Current.SetCurrentCulture(obj.Culture);
             await NavigationService.GoBackAsync(parameters);
         }
     }

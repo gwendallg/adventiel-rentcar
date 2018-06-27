@@ -1,0 +1,15 @@
+﻿[
+  {
+    "id": "1",
+    "manufacturer": "Renault",
+    "model": "Megane",
+    "description": "",
+    "number_plate": "YB-458-TE"
+  },{
+    "id": "2",
+    "manufacturer": "Renault",
+    "model": "Peugeot",
+    "description": "",
+    "number_plate": "TB-568-UY"
+  }
+]

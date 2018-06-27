@@ -1,4 +1,5 @@
-﻿using AdventielRentCar.Services;
+﻿using System.Globalization;
+using AdventielRentCar.Services;
 using Prism;
 using Prism.Ioc;
 using AdventielRentCar.Views;
@@ -24,16 +25,18 @@ namespace AdventielRentCar
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("NavigationPage/LogOnPage");
+            var languageService = Container.Resolve<ILanguageService>();
+            Application.Current.SetCurrentCulture(CultureInfo.GetCultureInfo(languageService.GetDefaultLanguage()));
+            await NavigationService.NavigateAsync("Navigation/Login");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<NavigationPage>("Navigation");
             containerRegistry.RegisterPopupNavigationService();
-
-            containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<LogOnPage>();
+            containerRegistry.RegisterForNavigation<MainPage>("Main");
+            containerRegistry.RegisterForNavigation<HomePage>("Home");
+            containerRegistry.RegisterForNavigation<LoginPage>("Login");
             containerRegistry.RegisterForNavigation<LanguagePopupPage>();
 
             containerRegistry.RegisterSingleton<IMigrationService, MigrationService>();

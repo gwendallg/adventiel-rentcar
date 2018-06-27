@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -78,10 +79,11 @@ namespace AdventielRentCar.Services
                 // migration exist et est valide
                 if (exist.Checkum == checkum)
                 {
+                    Debug.WriteLine($"Migration database: {exist.Script} checked");
                     return null;
                 }
 
-                throw new Exception($"invalid Cheksum Migration ${exist.Id}");
+                throw new Exception($"Invalid checksum migration {exist.Script}");
             }
 
             // création de la migration
@@ -110,6 +112,7 @@ namespace AdventielRentCar.Services
                 var migration = TryBuilNewMigration(resource, migrations, out var script);
                 if (migration == null) continue;
                 migrations = ApplyMigration(connection, migration, script);
+                Debug.WriteLine($"Migration database: {migration.Script} applied");
             }
         }
     }

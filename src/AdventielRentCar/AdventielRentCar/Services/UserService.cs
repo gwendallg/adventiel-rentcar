@@ -1,15 +1,16 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using AdventielRentCar.Models;
+using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace AdventielRentCar.Services
 {
-    /// <summary>
-    /// implémentation de service de gestion d'utilisateur
-    /// </summary>
+    /// <inheritdoc />
     public class UserService : IUserService
     {
 
+        private readonly INavigationService _navigationService;
         private readonly IDatabaseService _databaseService;
         private readonly ICryptographyService _cryptographyService;
 
@@ -17,9 +18,11 @@ namespace AdventielRentCar.Services
         /// initialise une nouvelle instance de la classe
         /// </summary>
         /// <param name="databaseService"></param>
-        public UserService(IDatabaseService databaseService)
+        /// <param name="navigationService"></param>
+        public UserService(IDatabaseService databaseService, INavigationService navigationService)
         {
             _cryptographyService = DependencyService.Get<ICryptographyService>();
+            _navigationService = navigationService;
             _databaseService = databaseService;
         }
 
@@ -46,6 +49,13 @@ namespace AdventielRentCar.Services
                 return hash != user.Hash ? null : user;
             }
         }
+
+        /// <inheritdoc />
+        public async Task LogoutAsync()
+        {
+            await _navigationService.NavigateAsync("Login");
+        }
+
 
         /// <inheritdoc />
         public string GetRememberLogin()

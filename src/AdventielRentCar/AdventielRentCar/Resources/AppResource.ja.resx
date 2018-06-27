@@ -180,4 +180,19 @@
   <data name="Update" xml:space="preserve">
     <value>変更</value>
   </data>
+  <data name="LicensePlate" xml:space="preserve">
+    <value>ナンバー プレート</value>
+  </data>
+  <data name="Mileage" xml:space="preserve">
+    <value>マイレージ</value>
+  </data>
+  <data name="Vintage" xml:space="preserve">
+    <value>ヴィンテージ</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>メニュー</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>切断</value>
+  </data>
 </root>

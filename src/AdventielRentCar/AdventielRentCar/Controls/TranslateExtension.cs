@@ -16,7 +16,7 @@ namespace AdventielRentCar.Controls
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            return Text == null ? null : ResourceManager.GetString(Text, CultureInfo.CurrentCulture);
+            return Text == null ? null : ResourceManager.GetString(Text, Application.Current.Properties["CultureInfo"] as CultureInfo);
         }
     }
 }

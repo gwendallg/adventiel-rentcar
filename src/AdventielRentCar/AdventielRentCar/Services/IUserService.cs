@@ -1,4 +1,5 @@
-﻿using AdventielRentCar.Models;
+﻿using System.Threading.Tasks;
+using AdventielRentCar.Models;
 
 namespace AdventielRentCar.Services
 {
@@ -33,5 +34,11 @@ namespace AdventielRentCar.Services
         /// </summary>
         /// <param name="login"></param>
         void SetRememberLogin(string login);
+
+        /// <summary>
+        /// deconnecte l'utilisateur
+        /// </summary>
+        /// <returns></returns>
+        Task LogoutAsync();
     }
 }

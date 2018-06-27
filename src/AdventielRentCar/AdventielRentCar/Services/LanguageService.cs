@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Resources;
 using AdventielRentCar.Models;
+using Xamarin.Forms;
 
 namespace AdventielRentCar.Services
 {
@@ -24,11 +25,7 @@ namespace AdventielRentCar.Services
         public LanguageService(IDatabaseService databaseService)
         {
             _databaseService = databaseService;
-            CurrentCulture = CultureInfo.GetCultureInfo(GetDefaultLanguage());
         }
-
-        /// <inheritdoc />
-        public CultureInfo CurrentCulture { get; set; }
 
         /// <inheritdoc />
         public List<string> GetAvailableLanguages()
@@ -45,7 +42,7 @@ namespace AdventielRentCar.Services
         /// <inheritdoc />
         public string Translate(string id)
         {
-            return Translate(id, CurrentCulture);
+            return Translate(id, Application.Current.GetCurrentCulture());
         }
 
         /// <inheritdoc />
@@ -70,6 +67,7 @@ namespace AdventielRentCar.Services
                     r.Code == Constants.ReferenceCodes.DefaultLanguage);
                 reference.Value = language;
                 connection.Update(reference);
+                Application.Current.Properties["CultureInfo"] = CultureInfo.GetCultureInfo(language);
             }
         }
     }

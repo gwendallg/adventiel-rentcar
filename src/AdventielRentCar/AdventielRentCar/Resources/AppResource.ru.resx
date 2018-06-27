@@ -180,4 +180,19 @@
   <data name="Update" xml:space="preserve">
     <value>Изменения</value>
   </data>
+  <data name="LicensePlate" xml:space="preserve">
+    <value>Номерные знаки</value>
+  </data>
+  <data name="Mileage" xml:space="preserve">
+    <value>Пробег</value>
+  </data>
+  <data name="Vintage" xml:space="preserve">
+    <value>Винтаж</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Отключите</value>
+  </data>
 </root>

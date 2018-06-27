@@ -2,9 +2,9 @@
 
 namespace AdventielRentCar.Views
 {
-	public partial class LogOnPage : ContentPage
+	public partial class LoginPage : ContentPage
 	{
-		public LogOnPage()
+		public LoginPage()
 		{
 			InitializeComponent ();
 		    NavigationPage.SetHasNavigationBar(this, false);

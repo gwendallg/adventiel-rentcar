@@ -7,10 +7,12 @@
   <ItemGroup>
     <None Remove="Migrations\db\V1__create-database.sql" />
     <None Remove="Migrations\db\V2__insert-data.sql" />
+    <None Remove="Migrations\db\V3__vehicle.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Migrations\db\V1__create-database.sql" />
+    <EmbeddedResource Include="Migrations\db\V3__vehicle.sql" />
     <EmbeddedResource Include="Migrations\db\V2__insert-data.sql" />
   </ItemGroup>
 
@@ -22,7 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LanguagePopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -32,9 +40,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\LogOnPage.xaml.cs">
-      <DependentUpon>LogOnPage.xaml</DependentUpon>
+    <Compile Update="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modules\VehicleFinders\Views\" />
+    <Folder Include="Modules\VehicleFinders\ViewModels\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

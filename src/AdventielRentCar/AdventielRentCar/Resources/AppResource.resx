@@ -180,4 +180,19 @@
   <data name="Update" xml:space="preserve">
     <value>Modifier</value>
   </data>
+  <data name="LicensePlate" xml:space="preserve">
+    <value>Plaque d'immatriculation</value>
+  </data>
+  <data name="Mileage" xml:space="preserve">
+    <value>Kilométrage</value>
+  </data>
+  <data name="Vintage" xml:space="preserve">
+    <value>Millésime</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Se déconnecter</value>
+  </data>
 </root>
