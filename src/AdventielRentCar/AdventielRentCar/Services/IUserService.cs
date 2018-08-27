@@ -16,24 +16,19 @@ namespace AdventielRentCar.Services
         void AddUser(User user, string newPassword);
 
         /// <summary>
-        /// retourne l'utilisateur authentifié
+        /// connecte l'utilisateur
         /// </summary>
         /// <param name="login"></param>
         /// <param name="password"></param>
+        /// <param name="remember"></param>
         /// <returns></returns>
-        User Authenticate(string login, string password);
+        Task LoginAsync(string login, string password, bool remember);
 
         /// <summary>
-        /// retourne le dernier login enregistré 
+        /// retourne le dernier utilisateur enregistré qui s'est connecté
         /// </summary>
         /// <returns></returns>
         string GetRememberLogin();
-
-        /// <summary>
-        /// affecte le dernier login enregistré
-        /// </summary>
-        /// <param name="login"></param>
-        void SetRememberLogin(string login);
 
         /// <summary>
         /// deconnecte l'utilisateur

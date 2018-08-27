@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AdventielRentCar.Models;
 using Prism.Navigation;
@@ -13,17 +14,19 @@ namespace AdventielRentCar.Services
         private readonly INavigationService _navigationService;
         private readonly IDatabaseService _databaseService;
         private readonly ICryptographyService _cryptographyService;
+        private readonly ILanguageService _languageService;
 
         /// <summary>
         /// initialise une nouvelle instance de la classe
         /// </summary>
         /// <param name="databaseService"></param>
         /// <param name="navigationService"></param>
-        public UserService(IDatabaseService databaseService, INavigationService navigationService)
+        public UserService(IDatabaseService databaseService, INavigationService navigationService, ILanguageService languageService)
         {
             _cryptographyService = DependencyService.Get<ICryptographyService>();
             _navigationService = navigationService;
             _databaseService = databaseService;
+            _languageService = languageService;
         }
 
         /// <inheritdoc />
@@ -37,25 +40,37 @@ namespace AdventielRentCar.Services
             }
         }
 
-        /// <inheritdoc />
-        public User Authenticate(string login, string password)
+        public async Task LoginAsync(string login, string password, bool remember)
         {
             using (var connection = _databaseService.Connnection())
             {
-                var loginToLower = login.ToLowerInvariant();
-                var user = connection.Find<User>(u => u.Login == loginToLower);
-                if (user == null) return null;
+                var usernameToInvariant = login.ToLowerInvariant();
+                var user = connection.Find<User>(u => u.Login == usernameToInvariant);
+                if (user == null) throw new Exception(_languageService.Translate("InvalidLoginOrPassword"));
                 var hash = _cryptographyService.Sha256(string.Concat(password, user.Salt));
-                return hash != user.Hash ? null : user;
+                if (hash != user.Hash) throw new Exception(_languageService.Translate("InvalidLoginOrPassword"));
+
+                if (remember)
+                {
+                    var reference = connection.Table<Reference>().Single(r =>
+                        r.Domain == Constants.ReferenceDomains.Parameters &&
+                        r.Code == Constants.ReferenceCodes.RememberLogin);
+                    reference.Value = login;
+                    connection.Update(reference);
+                }
+
+                Application.Current.Properties["login"] = login;
+                await _navigationService.NavigateAsync("Main/Navigation/Home");
             }
         }
 
         /// <inheritdoc />
         public async Task LogoutAsync()
         {
-            await _navigationService.NavigateAsync("Login");
+            Application.Current.Properties.Remove("login");
+            var parameters = new NavigationParameters {{Constants.NavigationSemaphore.LogOut, true}};
+            await _navigationService.GoBackToRootAsync(parameters);
         }
-
 
         /// <inheritdoc />
         public string GetRememberLogin()
@@ -66,19 +81,6 @@ namespace AdventielRentCar.Services
                     r.Domain == Constants.ReferenceDomains.Parameters &&
                     r.Code == Constants.ReferenceCodes.RememberLogin);
                 return reference.Value;
-            }
-        }
-
-        /// <inheritdoc />
-        public void SetRememberLogin(string login)
-        {
-            using (var connection = _databaseService.Connnection())
-            {
-                var reference = connection.Table<Reference>().Single(r =>
-                    r.Domain == Constants.ReferenceDomains.Parameters &&
-                    r.Code == Constants.ReferenceCodes.RememberLogin);
-                reference.Value = login;
-                connection.Update(reference);
             }
         }
     }

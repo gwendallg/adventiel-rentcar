@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using System;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using System.Globalization;
@@ -163,21 +164,15 @@ namespace AdventielRentCar.ViewModels
         /// </summary>
         private async void OnLogOn()
         {
-            var user = _userService.Authenticate(Login, Password);
-            if (user != null)
+            try
             {
-                if (IsRemenberMe)
-                {
-                    _userService.SetRememberLogin(user.Login);
-                }
-
-                await NavigationService.NavigateAsync("Main/Navigation/Home");
+                await _userService.LoginAsync(Login, Password, IsRemenberMe);
             }
-            else
+            catch (Exception e)
             {
                 await _pageDialogService.DisplayAlertAsync(
                     _languageService.Translate("Error"),
-                    _languageService.Translate("InvalidLoginOrPassword"),
+                    e.Message,
                     _languageService.Translate("Cancel"));
             }
         }
@@ -206,8 +201,15 @@ namespace AdventielRentCar.ViewModels
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            if (!parameters.ContainsKey(Constants.ReferenceCodes.DefaultLanguage)) return;
-            Translate();
+            if (parameters.ContainsKey(Constants.ReferenceCodes.DefaultLanguage))
+            {
+                Translate();
+            }
+
+            if (parameters.ContainsKey(Constants.NavigationSemaphore.LogOut))
+            {
+                Password = "";
+            }
         }
     }
 }

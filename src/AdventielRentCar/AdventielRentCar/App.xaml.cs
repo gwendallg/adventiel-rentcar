@@ -26,6 +26,7 @@ namespace AdventielRentCar
         {
             InitializeComponent();
             var languageService = Container.Resolve<ILanguageService>();
+            languageService.SetDefaultLanguage(languageService.GetDefaultLanguage());
             Application.Current.SetCurrentCulture(CultureInfo.GetCultureInfo(languageService.GetDefaultLanguage()));
             await NavigationService.NavigateAsync("Navigation/Login");
         }

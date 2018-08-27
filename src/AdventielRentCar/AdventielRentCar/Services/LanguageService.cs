@@ -50,10 +50,17 @@ namespace AdventielRentCar.Services
         {
             using (var connection = _databaseService.Connnection())
             {
-                return connection.Table<Reference>().Single(r =>
+
+                var result = connection.Table<Reference>().Single(r =>
                         r.Domain == Constants.ReferenceDomains.Parameters &&
                         r.Code == Constants.ReferenceCodes.DefaultLanguage)
                     .Value;
+                if (!Application.Current.Properties.ContainsKey("CultureInfo"))
+                {
+                    Application.Current.Properties["CultureInfo"] = CultureInfo.GetCultureInfo(result);
+                }
+
+                return result;
             }
         }
 

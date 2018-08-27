@@ -12,5 +12,10 @@
             public const string DefaultLanguage = "default_language";
             public const string RememberLogin = "remember_login";
         }
+
+        public struct NavigationSemaphore
+        {
+            public const string LogOut = "logout";
+        }
     }
 }
