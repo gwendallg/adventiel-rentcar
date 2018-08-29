@@ -18,7 +18,6 @@ namespace AdventielRentCar.iOS.Renders
             button.BackgroundColor = ((List<Color>) button.Bag)[0];
             button.TextColor = ((List<Color>) button.Bag)[1];
             button.BorderColor = ((List<Color>) button.Bag)[2];
-            button.TextColor = Color.Black;
         }
 
         void Button_Pressed(object sender, EventArgs e)
@@ -37,7 +36,7 @@ namespace AdventielRentCar.iOS.Renders
             {
                 if (e.OldElement != null)
                 {
-                    var button = ((RoundedButton)e.NewElement);
+                    var button = ((RoundedButton)e.OldElement);
                     button.Bag = null;
                     button.Pressed -= Button_Pressed;
                     button.Released -= Button_Released;
@@ -46,10 +45,11 @@ namespace AdventielRentCar.iOS.Renders
                 if (e.NewElement != null)
                 {
                     var button = (RoundedButton) e.NewElement;
+                    button.BorderRadius = 15;
                     button.Bag = new List<Color>();
-                    ((List<object>) button.Bag).Add(button.BackgroundColor);
-                    ((List<Object>) button.Bag).Add(button.TextColor);
-                    ((List<Object>) button.Bag).Add(button.BorderColor);
+                    ((List<Color>) button.Bag).Add(button.BackgroundColor);
+                    ((List<Color>) button.Bag).Add(button.TextColor);
+                    ((List<Color>) button.Bag).Add(button.BorderColor);
                     button.Released += Button_Released;
                     button.Pressed += Button_Pressed;
                 }

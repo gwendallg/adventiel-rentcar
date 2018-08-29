@@ -194,6 +194,9 @@
     <BundleResource Include="Resources\ic_language_it.png" />
     <BundleResource Include="Resources\ic_language_ja.png" />
     <BundleResource Include="Resources\ic_language_ru.png" />
+    <BundleResource Include="Resources\ic_adventiel.png" />
+    <BundleResource Include="Resources\ic_adventiel%402x.png" />
+    <BundleResource Include="Resources\ic_adventiel-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

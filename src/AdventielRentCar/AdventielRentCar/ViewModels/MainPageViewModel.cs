@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using AdventielRentCar.Services;
 using Prism.Navigation;
+using Xamarin.Forms;
 
 namespace AdventielRentCar.ViewModels
 {
@@ -11,6 +12,7 @@ namespace AdventielRentCar.ViewModels
 
 	    public MainPageViewModel(INavigationService navigationService,IUserService userService)
 	    {
+            _userName = (string)Application.Current.Properties["login"];
 	        _navigationService = navigationService;
 	        NavigateCommand = new DelegateCommand<string>(OnNavigateCommandExecuted);
             LogoutCommand = new DelegateCommand(async ()=> await userService.LogoutAsync());

@@ -2,25 +2,27 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:controls="clr-namespace:AdventielRentCar.Controls;assembly=AdventielRentCar"
     x:Class="AdventielRentCar.Views.LoginPage"
     Title="{Binding Title}">
     <RelativeLayout>
         <BoxView
+            x:Name="headBox"
             Color="{StaticResource DefaultTextColor}"
-            HeightRequest="100"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.2}"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" />
-        <Image
+        <Image x:Name="logo"
             Source="ic_adventiel.png"
             HeightRequest="70"
             WidthRequest="70"
             Scale="1.5"
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width, Factor=1, Constant = -110 }"
-            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0, Property=Y, Constant=60 }" />
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,ElementName=headBox, Factor=1, Property=Height, Constant=-60 }" />
         <StackLayout
-            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0, Constant=150}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=logo, Property=Y, Constant=100}"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
-            Margin="5"
+            Margin="10"
             Orientation="Vertical">
             <Entry
                 Placeholder="{Binding LblLogin}"
@@ -65,15 +67,16 @@
             </StackLayout>
             <controls:RoundedButton
                 Text="{Binding LblSigin}"
-                Style="{StaticResource DefaultButton}"/>
+                Style="{StaticResource DefaultButton}" />
             <controls:RoundedButton
                 Command="{Binding LogOnCommand}"
-                Text="{Binding LblLogOn}" 
-                Style="{StaticResource DefaultActiveButton}"/>
+                Text="{Binding LblLogOn}"
+                Style="{StaticResource DefaultActiveButton}" />
         </StackLayout>
-        <Label  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=-20}"
-                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" Text="Adventiel Copyrigth (c) 2018">
-            
+        <Label
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=-20}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+            Text="Adventiel Copyrigth (c) 2018">
         </Label>
     </RelativeLayout>
 </ContentPage>

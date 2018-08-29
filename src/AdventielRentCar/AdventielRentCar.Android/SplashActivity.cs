@@ -16,7 +16,7 @@ namespace AdventielRentCar.Droid
             base.OnCreate(savedInstanceState, persistentState);
             Log.Debug(Tag, "SplashActivity.OnCreate");
         }
-
+          
         // Launches the startup task
         protected override void OnResume()
         {
